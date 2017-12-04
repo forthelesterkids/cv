@@ -8,6 +8,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/search"
         android:drawableLeft="@drawable/search"
+        android:hint="@string/search_here"
         android:background="@color/white"/>
     <ListView
         android:layout_width="match_parent"
