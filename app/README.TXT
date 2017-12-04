@@ -7,3 +7,5 @@ Some pieces need to be implemented at this point.
 
 Only tested on a Tablet Emulator in landscape. I am 94% certain it will do weird things on a phone.
 
+//additional reminder: since i just looked at it again. Yes it needs a severe facelift
+
