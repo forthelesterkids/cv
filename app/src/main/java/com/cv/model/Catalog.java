@@ -2,8 +2,6 @@ package com.cv.model;
 
 import android.support.annotation.NonNull;
 
-import java.util.Collection;
-
 import io.realm.RealmList;
 import io.realm.RealmModel;
 import io.realm.annotations.PrimaryKey;
@@ -29,7 +27,7 @@ public class Catalog implements RealmModel {
         return this.uuid;
     }
 
-    public Collection<CatalogEntry> getCatalogEntries(){
+    public RealmList<CatalogEntry> getCatalogEntries(){
         return catalogEntries;
     }
 
