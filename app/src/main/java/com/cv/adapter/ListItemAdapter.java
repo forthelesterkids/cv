@@ -15,25 +15,25 @@ import io.realm.RealmList;
 
 public class ListItemAdapter extends ArrayAdapter<ListItem> implements View.OnClickListener {
 
-    Context mContext;
-    int layoutResourceId;
-    RealmList<ListItem> data = null;
+    private final Context context;
+    private final int layoutResourceId;
+    private final RealmList<ListItem> listItems;
 
-    public ListItemAdapter(Context mContext, int layoutResourceId, RealmList<ListItem> data) {
-        super(mContext, layoutResourceId, data);
+    public ListItemAdapter(Context context, int layoutResourceId, RealmList<ListItem> listItems) {
+        super(context, layoutResourceId, listItems);
         this.layoutResourceId = layoutResourceId;
-        this.mContext = mContext;
-        this.data = data;
+        this.context = context;
+        this.listItems = listItems;
 
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
+            LayoutInflater inflater = ((Activity) context).getLayoutInflater();
             convertView = inflater.inflate(layoutResourceId, parent, false);
         }
-        ListItem objectItem = data.get(position);
+        ListItem objectItem = listItems.get(position);
         TextView textViewItem = (TextView) convertView.findViewById(android.R.id.text1);
         textViewItem.setText(objectItem.getContent());
 
@@ -45,9 +45,9 @@ public class ListItemAdapter extends ArrayAdapter<ListItem> implements View.OnCl
     public void onClick(View v)
     {
         int pos = Integer.parseInt(v.getTag().toString());
-        if(mContext instanceof TimestampCallback) {
-            TimestampCallback callback = (TimestampCallback)mContext;
-            callback.updateTimestamp(data.get(pos));
+        if(context instanceof TimestampCallback) {
+            TimestampCallback callback = (TimestampCallback)context;
+            callback.updateTimestamp(listItems.get(pos));
         }
     }
 }
