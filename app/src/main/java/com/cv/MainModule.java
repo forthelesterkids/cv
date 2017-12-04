@@ -16,7 +16,7 @@ public class MainModule {
         return RealmDBHelper.getInstance();
     }
 
-    @Provides @Singleton
+    @Provides
     public CatalogEntryImpl providesCatalogEntryImpl() {
         return new CatalogEntryImpl();
     }
