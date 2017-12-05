@@ -33,21 +33,19 @@ public class ListItemAdapter extends ArrayAdapter<ListItem> implements View.OnCl
             LayoutInflater inflater = ((Activity) context).getLayoutInflater();
             convertView = inflater.inflate(layoutResourceId, parent, false);
         }
-        ListItem objectItem = listItems.get(position);
+        ListItem listItem = listItems.get(position);
         TextView textViewItem = (TextView) convertView.findViewById(android.R.id.text1);
-        textViewItem.setText(objectItem.getContent());
+        textViewItem.setText(listItem.getContent());
 
         convertView.setTag(String.valueOf(position));
         convertView.setOnClickListener(this);
         return convertView;
     }
 
-    public void onClick(View v)
-    {
-        int pos = Integer.parseInt(v.getTag().toString());
-        if(context instanceof TimestampCallback) {
-            TimestampCallback callback = (TimestampCallback)context;
-            callback.updateTimestamp(listItems.get(pos));
+    public void onClick(View view) {
+        int position = Integer.parseInt(view.getTag().toString());
+        if (context instanceof TimestampCallback) {
+            ((TimestampCallback) context).updateTimestamp(listItems.get(position));
         }
     }
 }

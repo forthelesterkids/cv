@@ -19,21 +19,22 @@ public class CatalogEntry implements RealmModel, Serializable {
     private RealmList<ListItem> headerText;
     private RealmList<ListItem> searchables;
 
-    public CatalogEntry(){}
+    public CatalogEntry() {
+    }
 
     public CatalogEntry(@NonNull String uuid, @NonNull String catalogEntryKey, @NonNull Transcription transcription,
-                        @NonNull RealmList<ListItem> searchables){
+                        @NonNull RealmList<ListItem> searchables) {
         this.uuid = uuid;
         this.catalogEntryKey = catalogEntryKey;
         this.transcription = transcription;
         this.searchables = searchables;
     }
 
-    public String getUuid(){
+    public String getUuid() {
         return this.uuid;
     }
 
-    public RealmList<ListItem> getSearchables(){
+    public RealmList<ListItem> getSearchables() {
         return this.searchables;
     }
 

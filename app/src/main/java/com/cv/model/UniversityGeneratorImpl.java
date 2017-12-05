@@ -2,10 +2,9 @@ package com.cv.model;
 
 import android.support.annotation.NonNull;
 
-import java.util.Collection;
-
 import javax.inject.Inject;
 
+import io.realm.RealmList;
 import io.realm.RealmModel;
 
 public class UniversityGeneratorImpl implements University.Generator {
@@ -20,26 +19,26 @@ public class UniversityGeneratorImpl implements University.Generator {
     }
 
     @Override
-    public void recordUniversity(@NonNull RealmModel university){
+    public void recordUniversity(@NonNull RealmModel university) {
         modelRecorder.persistModel(university);
     }
 
     @Override
-    public Collection<Catalog> getCatalogs(){
+    public RealmList<Catalog> getCatalogs() {
         return university.getCatalogs();
     }
 
     @Override
-    public Catalog getCatalogForId(@NonNull String uuid){
-        for(Catalog catalog: university.getCatalogs()){
+    public Catalog getCatalogForId(@NonNull String uuid) {
+        for (Catalog catalog : university.getCatalogs()) {
             return catalog.getUUID().equals(uuid) ? catalog : null;
         }
         return null;
     }
 
     @Override
-    public CatalogEntry getCatalogEntryForId(@NonNull String catalogId, @NonNull String catalogEntryId){
-        for(CatalogEntry catalogEntry: getCatalogForId(catalogId).getCatalogEntries()){
+    public CatalogEntry getCatalogEntryForId(@NonNull String catalogId, @NonNull String catalogEntryId) {
+        for (CatalogEntry catalogEntry : getCatalogForId(catalogId).getCatalogEntries()) {
             return catalogEntry.getUuid().equals(catalogEntryId) ? catalogEntry : null;
         }
         return null;

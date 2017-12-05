@@ -11,7 +11,8 @@ import dagger.Provides;
 @Module
 public class MainModule {
 
-    @Provides @Singleton
+    @Provides
+    @Singleton
     public RealmDBHelper providesRealmDBHelper() {
         return RealmDBHelper.getInstance();
     }

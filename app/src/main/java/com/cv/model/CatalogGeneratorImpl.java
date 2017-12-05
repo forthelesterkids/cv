@@ -17,15 +17,15 @@ public class CatalogGeneratorImpl implements Catalog.Generator {
 
     @Inject
     public CatalogGeneratorImpl(@NonNull UUIDGenerator uuidGenerator,
-                                   @NonNull ModelRecorder<Catalog> modelRecorder,
-                                   @NonNull Catalog catalog) {
+                                @NonNull ModelRecorder<Catalog> modelRecorder,
+                                @NonNull Catalog catalog) {
         this.uuidGenerator = uuidGenerator;
         this.modelRecorder = modelRecorder;
         this.catalog = catalog;
     }
 
     @Override
-    public CatalogEntry loadCatalogEntryById(@NonNull String uuid){
+    public CatalogEntry loadCatalogEntryById(@NonNull String uuid) {
         Realm realm = Realm.getDefaultInstance();
         CatalogEntry catalog = (CatalogEntry) realm.where(CatalogEntry.class).equalTo("uuid", uuid).findFirst();
         realm.close();

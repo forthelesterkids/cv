@@ -16,21 +16,26 @@ public class University implements RealmModel {
     private String universityKey;
     private RealmList<Catalog> catalogs;
 
-    public University(){}
+    public University() {
+    }
 
-    public University(String uuid, String universityKey, RealmList<Catalog> catalogs){
+    public University(String uuid, String universityKey, RealmList<Catalog> catalogs) {
         this.uuid = uuid;
         this.universityKey = universityKey;
         this.catalogs = catalogs;
     }
 
-    public Collection<Catalog> getCatalogs(){
+    public RealmList<Catalog> getCatalogs() {
         return this.catalogs;
     }
+
     interface Generator {
         Catalog getCatalogForId(@NonNull String uuid);
+
         void recordUniversity(@NonNull RealmModel university);
+
         CatalogEntry getCatalogEntryForId(@NonNull String catalogId, @NonNull String catalogEntryId);
+
         Collection<Catalog> getCatalogs();
     }
 }

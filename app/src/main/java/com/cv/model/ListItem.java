@@ -14,18 +14,20 @@ public class ListItem implements RealmModel {
     private String content;
     private int timestamp;
 
-    public ListItem(){}
+    public ListItem() {
+    }
 
-    public ListItem(@NonNull String content, int timestamp, @NonNull String uuid){
+    public ListItem(@NonNull String content, int timestamp, @NonNull String uuid) {
         this.content = content;
         this.timestamp = timestamp;
         this.uuid = uuid;
     }
-    public String getContent(){
+
+    public String getContent() {
         return this.content;
     }
 
-    public int timestamp(){
+    public int timestamp() {
         return this.timestamp;
     }
 }

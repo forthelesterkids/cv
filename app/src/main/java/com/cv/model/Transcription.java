@@ -11,9 +11,10 @@ public class Transcription implements RealmModel {
     private String uuid;
     private String transcription;
 
-    public Transcription(){}
+    public Transcription() {
+    }
 
-    public Transcription(@NonNull String uuid, @NonNull String transcription){
+    public Transcription(@NonNull String uuid, @NonNull String transcription) {
         this.uuid = uuid;
         this.transcription = transcription;
     }

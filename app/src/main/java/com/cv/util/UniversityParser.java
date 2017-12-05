@@ -17,19 +17,19 @@ public class UniversityParser {
     private final University university;
 
     @Inject
-    UniversityParser(University university){
+    UniversityParser(University university) {
         this.university = university;
     }
 
-    Catalog getCatalogById(@NonNull String uuid){
-        for(Catalog catalog: university.getCatalogs()){
+    Catalog getCatalogById(@NonNull String uuid) {
+        for (Catalog catalog : university.getCatalogs()) {
             return catalog.getUUID().equals(uuid) ? catalog : null;
         }
         return null;
     }
 
-    CatalogEntry getCatalogEntryById(@NonNull String catalogId, @NonNull String catalogEntryId){
-        for(CatalogEntry catalogEntry: getCatalogById(catalogId).getCatalogEntries()){
+    CatalogEntry getCatalogEntryById(@NonNull String catalogId, @NonNull String catalogEntryId) {
+        for (CatalogEntry catalogEntry : getCatalogById(catalogId).getCatalogEntries()) {
             return catalogEntry.getUuid().equals(catalogEntryId) ? catalogEntry : null;
         }
         return null;

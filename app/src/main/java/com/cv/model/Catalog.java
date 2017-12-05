@@ -15,19 +15,20 @@ public class Catalog implements RealmModel {
     private String catalogKey;
     private RealmList<CatalogEntry> catalogEntries;
 
-    public Catalog() {}
+    public Catalog() {
+    }
 
-    public Catalog(String uuid, String catalogKey, RealmList<CatalogEntry> catalogEntries){
+    public Catalog(String uuid, String catalogKey, RealmList<CatalogEntry> catalogEntries) {
         this.uuid = uuid;
         this.catalogKey = catalogKey;
         this.catalogEntries = catalogEntries;
     }
 
-    public String getUUID(){
+    public String getUUID() {
         return this.uuid;
     }
 
-    public RealmList<CatalogEntry> getCatalogEntries(){
+    public RealmList<CatalogEntry> getCatalogEntries() {
         return catalogEntries;
     }
 

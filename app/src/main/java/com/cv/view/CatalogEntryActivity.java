@@ -15,12 +15,13 @@ public class CatalogEntryActivity extends FragmentActivity implements TimestampC
 
     private CatalogEntry catalogEntry;
 
-    @Inject RealmDBHelper realmDBHelper;
+    @Inject
+    RealmDBHelper realmDBHelper;
     private CatalogEntryVideoViewFragment catalogEntryVideoViewFragment;
     private CatalogSearchFragment catalogSearchFragment;
     private static final String UUID = "UUID";
 
-    protected void onCreate(Bundle bundle){
+    protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         ((CVApplication) getApplication()).component().inject(this);
         setContentView(R.layout.activity_catalog_entry);
@@ -36,7 +37,7 @@ public class CatalogEntryActivity extends FragmentActivity implements TimestampC
     }
 
     @Override
-    public void updateTimestamp(ListItem listable){
+    public void updateTimestamp(ListItem listable) {
         catalogEntryVideoViewFragment.seekToTimestamp(listable.timestamp());
     }
 }

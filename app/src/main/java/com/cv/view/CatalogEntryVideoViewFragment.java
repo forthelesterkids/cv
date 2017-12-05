@@ -18,13 +18,13 @@ public class CatalogEntryVideoViewFragment extends Fragment implements VideoUpda
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View videoContainer = inflater.inflate(R.layout.catalog_entry_video_view_fragment, container);
-        videoView = (VideoView)videoContainer.findViewById(R.id.video_view);
+        videoView = (VideoView) videoContainer.findViewById(R.id.video_view);
         addVideoController();
 
         return videoContainer;
     }
 
-    public void addVideoController(){
+    public void addVideoController() {
         MediaController mediaController = new MediaController(getActivity());
         mediaController.setAnchorView(videoView);
         mediaController.setMediaPlayer(videoView);
@@ -36,7 +36,7 @@ public class CatalogEntryVideoViewFragment extends Fragment implements VideoUpda
     }
 
     @Override
-    public void seekToTimestamp(int timestamp){
+    public void seekToTimestamp(int timestamp) {
         videoView.seekTo(timestamp);
         videoView.start();
     }

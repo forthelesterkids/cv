@@ -11,14 +11,11 @@ import io.realm.RealmConfiguration;
 
 
 public class CVApplication extends Application {
-    private static CVApplication instance = new CVApplication();
     private MainComponent component;
 
-    public CVApplication(){}
-
-    public CVApplication getInstance(){
-        return instance;
+    public CVApplication() {
     }
+
     @Override
     public void onCreate() {
         super.onCreate();

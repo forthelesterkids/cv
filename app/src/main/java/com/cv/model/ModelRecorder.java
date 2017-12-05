@@ -2,9 +2,7 @@ package com.cv.model;
 
 import io.realm.RealmModel;
 
-/**
- * Created by christopher.lester on 12/2/17.
- */
+//does nothing until realm queries are hooked up
 
 public class ModelRecorder<T extends RealmModel> {
 
