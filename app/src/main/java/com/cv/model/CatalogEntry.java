@@ -38,11 +38,17 @@ public class CatalogEntry implements RealmModel, Serializable {
         return searchables;
     }
 
-    public Transcription getTranscription(){ return transcription; }
+    public Transcription getTranscription() {
+        return transcription;
+    }
 
-    public String getCatalogEntryKey(){ return catalogEntryKey; }
+    public String getCatalogEntryKey() {
+        return catalogEntryKey;
+    }
 
-    public String getVideoPath(){ return videoPath; }
+    public String getVideoPath() {
+        return videoPath;
+    }
 
     interface Generator {
         RealmList<ListItem> filteredSearchables(RealmList<ListItem> searchables, @NonNull String searchString);

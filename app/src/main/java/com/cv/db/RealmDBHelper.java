@@ -22,9 +22,10 @@ public class RealmDBHelper {
 
     private static final RealmDBHelper instance = new RealmDBHelper();
 
-    private RealmDBHelper(){}
+    private RealmDBHelper() {
+    }
 
-    public static RealmDBHelper getInstance(){
+    public static RealmDBHelper getInstance() {
         return instance;
     }
 
@@ -33,8 +34,8 @@ public class RealmDBHelper {
         University university = null;
         try {
             university = realm.where(University.class).equalTo("uuid", uuid).findFirst();
-        } catch(Exception exception) {
-           Log.e(TAG, "Exception hit while trying to fetch University");
+        } catch (Exception exception) {
+            Log.e(TAG, "Exception hit while trying to fetch University");
         } finally {
             realm.close();
             return university;
@@ -46,7 +47,7 @@ public class RealmDBHelper {
         Catalog catalog = null;
         try {
             catalog = realm.where(Catalog.class).equalTo("uuid", uuid).findFirst();
-        } catch(Exception exception) {
+        } catch (Exception exception) {
             Log.e(TAG, "Exception hit while trying to fetch Catalog");
         } finally {
             realm.close();
@@ -62,10 +63,11 @@ public class RealmDBHelper {
         listItems.add(new ListItem("way too big to use my free converter", 5000, "1"));
         listItems.add(new ListItem("so lets try to cap it out at about", 10000, "1"));
         listItems.add(new ListItem("twenty seconds my backyard by the way one more time thats my grill ok cool", 15000, "1"));
-        String videoUri =  "android.resource://com.cv/raw/new_backyard";
+        String videoUri = "android.resource://com.cv/raw/new_backyard";
         CatalogEntry catalogEntry = new CatalogEntry(uuid, "1", transcription, listItems, videoUri);
         return catalogEntry;
     }
 
-    public void persistCatalogEntry(final CatalogEntry catalogEntry){}
+    public void persistCatalogEntry(final CatalogEntry catalogEntry) {
+    }
 }

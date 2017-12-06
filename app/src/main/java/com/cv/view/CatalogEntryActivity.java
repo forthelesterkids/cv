@@ -24,15 +24,14 @@ public class CatalogEntryActivity extends FragmentActivity implements TimestampC
         super.onCreate(bundle);
         ((CVApplication) getApplication()).component().inject(this);
         setContentView(R.layout.activity_catalog_entry);
-        catalogEntry = realmDBHelper.getStubCatalogEntryById(UUID);
+        catalogEntry = realmDBHelper.getStubCatalogEntryById(getCatalogEntryUUID());
         catalogEntryVideoViewFragment = (CatalogEntryVideoViewFragment) getSupportFragmentManager().findFragmentById(R.id.video_view);
         catalogSearchFragment = (CatalogSearchFragment) getSupportFragmentManager().findFragmentById(R.id.catalog_entry_search);
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        //catalogEntry = realmDBHelper.getStubCatalogEntryById(UUID);
+    private String getCatalogEntryUUID() {
+        String uuid = getIntent().getStringExtra(UUID);
+        return uuid == null ? "1" : uuid;
     }
 
     @Override
@@ -40,7 +39,7 @@ public class CatalogEntryActivity extends FragmentActivity implements TimestampC
         catalogEntryVideoViewFragment.seekToTimestamp(listable.getTimestamp());
     }
 
-    public CatalogEntry getCatalogEntry(){
+    public CatalogEntry getCatalogEntry() {
         return catalogEntry;
     }
 }

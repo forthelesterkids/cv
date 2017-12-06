@@ -31,9 +31,13 @@ public class University implements RealmModel {
         return catalogs;
     }
 
-    public String getUUID(){ return uuid; }
+    public String getUUID() {
+        return uuid;
+    }
 
-    public String getUniversityKey(){ return universityKey; }
+    public String getUniversityKey() {
+        return universityKey;
+    }
 
     interface Generator {
         Catalog getCatalogForId(@NonNull String uuid);

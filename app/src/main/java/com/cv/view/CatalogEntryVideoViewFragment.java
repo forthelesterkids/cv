@@ -27,10 +27,10 @@ public class CatalogEntryVideoViewFragment extends Fragment implements VideoUpda
     }
 
     @Override
-    public void onStart(){
+    public void onStart() {
         super.onStart();
-        if(getActivity() instanceof CatalogEntryActivity){
-            catalogEntry = ((CatalogEntryActivity)getActivity()).getCatalogEntry();
+        if (getActivity() instanceof CatalogEntryActivity) {
+            catalogEntry = ((CatalogEntryActivity) getActivity()).getCatalogEntry();
         }
         updateVideoView(catalogEntry);
     }
@@ -42,7 +42,7 @@ public class CatalogEntryVideoViewFragment extends Fragment implements VideoUpda
         videoView.setMediaController(mediaController);
     }
 
-    private void updateVideoView(CatalogEntry catalogEntry){
+    private void updateVideoView(CatalogEntry catalogEntry) {
         videoView.setVideoURI(Uri.parse(catalogEntry.getVideoPath()));
         videoView.start();
     }

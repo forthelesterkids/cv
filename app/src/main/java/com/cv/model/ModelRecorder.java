@@ -6,7 +6,7 @@ import io.realm.RealmModel;
 
 public class ModelRecorder<T extends RealmModel> {
 
-    void persistModel(RealmModel model){
+    void persistModel(RealmModel model) {
         //savetorealm
     }
 }

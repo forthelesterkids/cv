@@ -41,18 +41,20 @@ public class CatalogSearchFragment extends ListFragment {
     }
 
     @Override
-    public void onStart(){
+    public void onStart() {
         super.onStart();
-        if(getActivity() instanceof CatalogEntryActivity){
-            catalogEntry = ((CatalogEntryActivity)getActivity()).getCatalogEntry();
+        if (getActivity() instanceof CatalogEntryActivity) {
+            catalogEntry = ((CatalogEntryActivity) getActivity()).getCatalogEntry();
         }
     }
+
     private void addListeners() {
         searchText.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
                 if (keyEvent.getAction() == KeyEvent.ACTION_UP) {
-                    updateList(catalogEntryImpl.filteredSearchables(catalogEntry.getSearchables(), searchText.getText().toString()));
+                    updateList(catalogEntryImpl.filteredSearchables(catalogEntry.getSearchables(),
+                            searchText.getText().toString()));
                 }
                 return false;
             }
@@ -60,10 +62,11 @@ public class CatalogSearchFragment extends ListFragment {
 
     }
 
-    public void updateList(@NonNull RealmList<ListItem> listables) {
+    public void updateList(@NonNull RealmList<ListItem> transcriptionEntries) {
 
-        ListItemAdapter adapter = new ListItemAdapter(getActivity(), android.R.layout.simple_list_item_1, listables);
-        listView.setAdapter(adapter);
+        ListItemAdapter searchAdapter = new ListItemAdapter(getActivity(), android.R.layout.simple_list_item_1,
+                transcriptionEntries);
+        listView.setAdapter(searchAdapter);
     }
 
 }

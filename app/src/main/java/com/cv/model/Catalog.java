@@ -32,7 +32,9 @@ public class Catalog implements RealmModel {
         return catalogEntries;
     }
 
-    public String getCatalogKey(){ return catalogKey; }
+    public String getCatalogKey() {
+        return catalogKey;
+    }
 
     interface Generator {
         CatalogEntry loadCatalogEntryById(@NonNull String uuid);
