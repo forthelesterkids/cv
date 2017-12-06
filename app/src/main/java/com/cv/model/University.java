@@ -6,12 +6,14 @@ import java.util.Collection;
 
 import io.realm.RealmList;
 import io.realm.RealmModel;
+import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.RealmClass;
 
 
 @RealmClass
 public class University implements RealmModel {
 
+    @PrimaryKey
     private String uuid;
     private String universityKey;
     private RealmList<Catalog> catalogs;
@@ -26,8 +28,12 @@ public class University implements RealmModel {
     }
 
     public RealmList<Catalog> getCatalogs() {
-        return this.catalogs;
+        return catalogs;
     }
+
+    public String getUUID(){ return uuid; }
+
+    public String getUniversityKey(){ return universityKey; }
 
     interface Generator {
         Catalog getCatalogForId(@NonNull String uuid);

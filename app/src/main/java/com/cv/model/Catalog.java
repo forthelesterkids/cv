@@ -25,12 +25,14 @@ public class Catalog implements RealmModel {
     }
 
     public String getUUID() {
-        return this.uuid;
+        return uuid;
     }
 
     public RealmList<CatalogEntry> getCatalogEntries() {
         return catalogEntries;
     }
+
+    public String getCatalogKey(){ return catalogKey; }
 
     interface Generator {
         CatalogEntry loadCatalogEntryById(@NonNull String uuid);

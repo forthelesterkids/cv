@@ -20,7 +20,7 @@ public class Transcription implements RealmModel {
     }
 
     public String getTranscription() {
-        return this.transcription;
+        return transcription;
     }
 
 }

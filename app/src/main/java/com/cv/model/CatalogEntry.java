@@ -15,8 +15,6 @@ public class CatalogEntry implements RealmModel, Serializable {
     private String uuid;
     private String catalogEntryKey;
     private Transcription transcription;
-    private String key;
-    private RealmList<ListItem> headerText;
     private RealmList<ListItem> searchables;
 
     public CatalogEntry() {
@@ -31,12 +29,16 @@ public class CatalogEntry implements RealmModel, Serializable {
     }
 
     public String getUuid() {
-        return this.uuid;
+        return uuid;
     }
 
     public RealmList<ListItem> getSearchables() {
-        return this.searchables;
+        return searchables;
     }
+
+    public Transcription getTranscription(){ return transcription; }
+
+    public String getCatalogEntryKey(){ return catalogEntryKey; }
 
     interface Generator {
         RealmList<ListItem> filteredSearchables(RealmList<ListItem> searchables, @NonNull String searchString);

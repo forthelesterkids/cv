@@ -24,10 +24,10 @@ public class ListItem implements RealmModel {
     }
 
     public String getContent() {
-        return this.content;
+        return content;
     }
 
-    public int timestamp() {
-        return this.timestamp;
+    public int getTimestamp() {
+        return timestamp;
     }
 }
