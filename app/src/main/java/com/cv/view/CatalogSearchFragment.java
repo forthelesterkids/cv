@@ -25,9 +25,9 @@ public class CatalogSearchFragment extends ListFragment {
 
     private ListView listView;
     private EditText editText;
+    private CatalogEntry catalogEntry;
     @Inject
     CatalogEntryImpl catalogEntryImpl;
-    private CatalogEntry catalogEntry;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -40,10 +40,13 @@ public class CatalogSearchFragment extends ListFragment {
         return searchView;
     }
 
-    public void setCatalogEntry(CatalogEntry catalogEntry) {
-        this.catalogEntry = catalogEntry;
+    @Override
+    public void onStart(){
+        super.onStart();
+        if(getActivity() instanceof CatalogEntryActivity){
+            catalogEntry = ((CatalogEntryActivity)getActivity()).getCatalogEntry();
+        }
     }
-
     private void addListeners() {
         editText.setOnKeyListener(new View.OnKeyListener() {
             @Override

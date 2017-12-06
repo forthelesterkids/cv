@@ -16,16 +16,18 @@ public class CatalogEntry implements RealmModel, Serializable {
     private String catalogEntryKey;
     private Transcription transcription;
     private RealmList<ListItem> searchables;
+    private String videoPath;
 
     public CatalogEntry() {
     }
 
     public CatalogEntry(@NonNull String uuid, @NonNull String catalogEntryKey, @NonNull Transcription transcription,
-                        @NonNull RealmList<ListItem> searchables) {
+                        @NonNull RealmList<ListItem> searchables, @NonNull String videoPath) {
         this.uuid = uuid;
         this.catalogEntryKey = catalogEntryKey;
         this.transcription = transcription;
         this.searchables = searchables;
+        this.videoPath = videoPath;
     }
 
     public String getUuid() {
@@ -39,6 +41,8 @@ public class CatalogEntry implements RealmModel, Serializable {
     public Transcription getTranscription(){ return transcription; }
 
     public String getCatalogEntryKey(){ return catalogEntryKey; }
+
+    public String getVideoPath(){ return videoPath; }
 
     interface Generator {
         RealmList<ListItem> filteredSearchables(RealmList<ListItem> searchables, @NonNull String searchString);

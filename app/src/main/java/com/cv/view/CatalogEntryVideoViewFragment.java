@@ -10,10 +10,12 @@ import android.widget.MediaController;
 import android.widget.VideoView;
 
 import com.cv.R;
+import com.cv.model.CatalogEntry;
 
 public class CatalogEntryVideoViewFragment extends Fragment implements VideoUpdateable {
 
     private VideoView videoView;
+    private CatalogEntry catalogEntry;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -24,14 +26,24 @@ public class CatalogEntryVideoViewFragment extends Fragment implements VideoUpda
         return videoContainer;
     }
 
+    @Override
+    public void onStart(){
+        super.onStart();
+        if(getActivity() instanceof CatalogEntryActivity){
+            catalogEntry = ((CatalogEntryActivity)getActivity()).getCatalogEntry();
+        }
+        updateVideoView(catalogEntry);
+    }
+
     public void addVideoController() {
         MediaController mediaController = new MediaController(getActivity());
         mediaController.setAnchorView(videoView);
         mediaController.setMediaPlayer(videoView);
         videoView.setMediaController(mediaController);
-        //hard coded for now using fake data
-        String uri = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.new_backyard;
-        videoView.setVideoURI(Uri.parse(uri));
+    }
+
+    private void updateVideoView(CatalogEntry catalogEntry){
+        videoView.setVideoURI(Uri.parse(catalogEntry.getVideoPath()));
         videoView.start();
     }
 

@@ -62,7 +62,8 @@ public class RealmDBHelper {
         listItems.add(new ListItem("way too big to use my free converter", 5000, "1"));
         listItems.add(new ListItem("so lets try to cap it out at about", 10000, "1"));
         listItems.add(new ListItem("twenty seconds my backyard by the way one more time thats my grill ok cool", 15000, "1"));
-        CatalogEntry catalogEntry = new CatalogEntry(uuid, "1", transcription, listItems);
+        String videoUri =  "android.resource://com.cv/raw/new_backyard";
+        CatalogEntry catalogEntry = new CatalogEntry(uuid, "1", transcription, listItems, videoUri);
         return catalogEntry;
     }
 

@@ -14,17 +14,17 @@ import javax.inject.Inject;
 public class CatalogEntryActivity extends FragmentActivity implements TimestampCallback {
 
     private CatalogEntry catalogEntry;
-
-    @Inject
-    RealmDBHelper realmDBHelper;
     private CatalogEntryVideoViewFragment catalogEntryVideoViewFragment;
     private CatalogSearchFragment catalogSearchFragment;
     private static final String UUID = "UUID";
+    @Inject
+    RealmDBHelper realmDBHelper;
 
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         ((CVApplication) getApplication()).component().inject(this);
         setContentView(R.layout.activity_catalog_entry);
+        catalogEntry = realmDBHelper.getStubCatalogEntryById(UUID);
         catalogEntryVideoViewFragment = (CatalogEntryVideoViewFragment) getSupportFragmentManager().findFragmentById(R.id.video_view);
         catalogSearchFragment = (CatalogSearchFragment) getSupportFragmentManager().findFragmentById(R.id.catalog_entry_search);
     }
@@ -32,12 +32,15 @@ public class CatalogEntryActivity extends FragmentActivity implements TimestampC
     @Override
     protected void onStart() {
         super.onStart();
-        catalogEntry = realmDBHelper.getStubCatalogEntryById(UUID);
-        catalogSearchFragment.setCatalogEntry(catalogEntry);
+        //catalogEntry = realmDBHelper.getStubCatalogEntryById(UUID);
     }
 
     @Override
     public void updateTimestamp(ListItem listable) {
         catalogEntryVideoViewFragment.seekToTimestamp(listable.getTimestamp());
+    }
+
+    public CatalogEntry getCatalogEntry(){
+        return catalogEntry;
     }
 }
