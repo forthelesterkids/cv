@@ -38,6 +38,6 @@ public class CatalogEntryActivity extends FragmentActivity implements TimestampC
 
     @Override
     public void updateTimestamp(ListItem listable) {
-        catalogEntryVideoViewFragment.seekToTimestamp(listable.timestamp());
+        catalogEntryVideoViewFragment.seekToTimestamp(listable.getTimestamp());
     }
 }
