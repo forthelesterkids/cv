@@ -24,7 +24,7 @@ import io.realm.RealmList;
 public class CatalogSearchFragment extends ListFragment {
 
     private ListView listView;
-    private EditText editText;
+    private EditText searchText;
     private CatalogEntry catalogEntry;
     @Inject
     CatalogEntryImpl catalogEntryImpl;
@@ -34,7 +34,7 @@ public class CatalogSearchFragment extends ListFragment {
         View searchView = inflater.inflate(R.layout.catalog_search_fragment, container);
         ((CVApplication) getActivity().getApplication()).component().inject(this);
         listView = (ListView) searchView.findViewById(android.R.id.list);
-        editText = (EditText) searchView.findViewById(R.id.search);
+        searchText = (EditText) searchView.findViewById(R.id.search);
         addListeners();
 
         return searchView;
@@ -48,11 +48,11 @@ public class CatalogSearchFragment extends ListFragment {
         }
     }
     private void addListeners() {
-        editText.setOnKeyListener(new View.OnKeyListener() {
+        searchText.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int i, KeyEvent keyEvent) {
                 if (keyEvent.getAction() == KeyEvent.ACTION_UP) {
-                    updateList(catalogEntryImpl.filteredSearchables(catalogEntry.getSearchables(), editText.getText().toString()));
+                    updateList(catalogEntryImpl.filteredSearchables(catalogEntry.getSearchables(), searchText.getText().toString()));
                 }
                 return false;
             }
