@@ -32,7 +32,7 @@ public class CatalogSearchFragment extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View searchView = inflater.inflate(R.layout.catalog_search_fragment, container);
-        ((CVApplication) getActivity().getApplication()).component().inject(this);
+        ((CVApplication) getActivity().getApplication()).getComponent().inject(this);
         listView = (ListView) searchView.findViewById(android.R.id.list);
         searchText = (EditText) searchView.findViewById(R.id.search);
         addListeners();

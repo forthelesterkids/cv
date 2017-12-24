@@ -5,33 +5,38 @@ import android.app.Application;
 import com.cv.DaggerMainComponent;
 import com.cv.MainComponent;
 import com.cv.MainModule;
+import com.cv.db.CVRealmModule;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
+/**
+ * Created by christopher.lester on 12/22/17.
+ */
 
 public class CVApplication extends Application {
-    private MainComponent component;
 
-    public CVApplication() {
-    }
+    public MainComponent component;
 
     @Override
-    public void onCreate() {
+    public void onCreate(){
         super.onCreate();
         Realm.init(this);
-        RealmConfiguration config = new RealmConfiguration.Builder().name("cv.cvrealm").build();
-        Realm.setDefaultConfiguration(config);
-        setupGraph();
-    }
+        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder()
+                .name(Realm.DEFAULT_REALM_NAME)
+                .modules(new CVRealmModule())
+                .schemaVersion(1)
+                .build();
 
-    private void setupGraph() {
+        Realm.setDefaultConfiguration(realmConfiguration);
+
         component = DaggerMainComponent.builder()
                 .mainModule(new MainModule())
                 .build();
+        component.inject(this);
     }
 
-    public MainComponent component() {
+    public MainComponent getComponent(){
         return component;
     }
 }

@@ -22,7 +22,7 @@ public class CatalogEntryActivity extends FragmentActivity implements TimestampC
 
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        ((CVApplication) getApplication()).component().inject(this);
+        ((CVApplication) getApplication()).getComponent().inject(this);
         setContentView(R.layout.activity_catalog_entry);
         catalogEntry = realmDBHelper.getStubCatalogEntryById(getCatalogEntryUUID());
         catalogEntryVideoViewFragment = (CatalogEntryVideoViewFragment) getSupportFragmentManager().findFragmentById(R.id.video_view);
@@ -42,4 +42,5 @@ public class CatalogEntryActivity extends FragmentActivity implements TimestampC
     public CatalogEntry getCatalogEntry() {
         return catalogEntry;
     }
+
 }
